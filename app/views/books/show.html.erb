@@ -1,0 +1,10 @@
+<!--１個の投稿の詳細ページ（タイトルと本文）-->
+
+<p>Title:<%= @book.title %></p>
+<p>Body:<%= @book.body %></p>
+
+<!--編集ボタン・戻るボタン（一覧ページへ）-->
+
+<%= link_to "Edit", edit_book_path(@book) %>
+<%= "|" %>
+<%= link_to "Back", books_path %>
