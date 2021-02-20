@@ -1,3 +1,42 @@
 // Place all the styles related to the books controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// topページ
+.about-bookers{
+  margin: 20px 50px;
+}
+
+.about-bookers-text-box{
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+// indexページ
+.index-title{
+  margin-bottom: 15px;
+}
+
+td{
+  padding: 5px;
+}
+
+// newページ
+.new-content{
+  margin-top: 30px;
+}
+.new{
+  margin-top: 15px;
+}
+
+// showページ
+.show-content{
+  margin: 20px 50px;
+}
+.show-content-title{
+  margin-top: 20px;
+}
+.show-content-body{
+  margin-top: 20px;
+}

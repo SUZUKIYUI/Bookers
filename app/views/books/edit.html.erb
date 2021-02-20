@@ -1,17 +1,40 @@
-<h1>Editing Book</h1>
+<h1 class="font-bold">Editing Book</h1>
 
 <!--------------------編集ページ-------------------->
 
 <%= form_with model:@book, local:true do |f| %>
+
+    <!-------------------------エラーメッセージ---------------------------->
+    <% if @book_error.any? %>
+        <div class="error-box hide-box">
+            <p class="error-lead font-bold">
+                <%= "#{@book_error.length} errors prohibited this book from being saved:" %>
+            </p>
+            <ul class="error-list">
+                <% @book.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                <% end %>
+            </ul>
+    　　</div>
+    <% end %>
+    <!--------------------------------------------------------------------->
+
+    <!--------入力フォーム------->
+
     <p>Title</p>
     <%= f.text_field :title %>
     <p>Body</p>
     <%= f.text_area :body %>
-    <%= f.submit "Update Book" %>
+    <%= f.submit "Update Book", class:"submit-btn" %>
+    <!--------------------------->
 <% end %>
 
 <!--１個の投稿の詳細ページリンク・一覧ページリンク-->
-<%= link_to "Show", book_path(@book) %>
-<%= "|" %>
-<%= link_to "Back", books_path %>
 
+<div class="link-content">
+    <%= link_to "Show", book_path(@book) %>
+    <%= "|" %>
+    <%= link_to "Back", books_path %>
+</div>

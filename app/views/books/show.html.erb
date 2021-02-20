@@ -1,10 +1,20 @@
-<!--１個の投稿の詳細ページ（タイトルと本文）-->
+<!-----------------１個の投稿の詳細ページ-------------------->
 
-<p>Title:<%= @book.title %></p>
-<p>Body:<%= @book.body %></p>
+<div class="show-content">
 
-<!--編集ボタン・戻るボタン（一覧ページへ）-->
+    <!--------編集で成功したときのサクセスメッセージ-------->
+    <span class="flash-message"><%= flash[:notice] %></span>
+    <!------------------------------------------------------>
 
-<%= link_to "Edit", edit_book_path(@book) %>
-<%= "|" %>
-<%= link_to "Back", books_path %>
+    <!----------------------タイトルと本文------------------------>
+    <p class="show-content-title"><span class="font-bold">Title: </span><%= @book.title %></p>
+    <p class="show-content-body"><span class="font-bold">Body: </span><%= @book.body %></p>
+</div>
+
+<!---編集ボタン・戻るボタン（一覧ページへ）--->
+
+<div class="link-content">
+    <%= link_to "Edit", edit_book_path(@book) %>
+    <%= "|" %>
+    <%= link_to "Back", books_path %>
+</div>

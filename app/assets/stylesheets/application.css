@@ -13,3 +13,71 @@
  *= require_tree .
  *= require_self
  */
+
+
+ /*----------リセットCSS-----------*/
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    padding: 30px;
+}
+
+.font-bold{
+    font-weight: bold;
+}
+
+/*----------リンク・ボタン----------*/
+a{
+    color:black;
+    padding: 2px;
+}
+
+a:hover{
+    color: white;
+    background-color: black;
+}
+
+.submit-btn{
+  padding:3px;
+  display: block;
+  margin-top: 10px;
+}
+
+.link-content{
+  margin-top: 30px;
+}
+
+.flash-message{
+  color: green;
+}
+
+/*----------エラーテキスト-----------*/
+.error-box{
+  border: solid 3px red;
+  background-color: #EEEEEE;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.error-lead{
+  height:30px;
+  padding:2px 20px;
+  background-color: red;
+  color: white;
+}
+
+.error-list{
+  display: flex;
+  flex-direction:column;
+  justify-content:center;
+  margin: 30px 60px;
+}
+
+.error-list li{
+  list-style-type: square;
+
+}

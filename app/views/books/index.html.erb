@@ -1,42 +1,62 @@
-<h1>Books</h1>
-<!-------------------------------投稿一覧------------------------------------>
+<!-----------------------------削除できた時のサクセスメッセージ---------------------------->
 
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Body</th>
-    <th colspan="3"></th>
-  </tr>
-  <% @books.each do |book| %>
-  <tr>
-    <td><%= book.title %></td>
-    <td><%= book.body %></td>
-    <td><%= link_to "Show",book_path(book) %></td>
-    <td><%= link_to "Edit",edit_book_path(book) %></td>
-    <td><%= link_to "Destroy",book_path(book), method: :delete %></td>
-  </tr>
+<span class="flash-message"><%= flash[:notice] %></span>
+
+<!-------------------------------indexページ（投稿一覧）------------------------------------>
+<% if  %>
+  <div class="index-content">
+  
+    <h1 class="index-title font-bold">Books</h1>
+  
+    <table>
+      <tr>
+        <th class="font-bold">Title</th>
+        <th class="font-bold">Body</th>
+        <th colspan="3"></th>
+      </tr>
+      <% @books.each do |book| %>
+      <tr>
+        <td><%= book.title %></td>
+        <td><%= book.body %></td>
+        <td><%= link_to "Show",book_path(book) %></td>
+        <td><%= link_to "Edit",edit_book_path(book) %></td>
+        <td><%= link_to "Destroy",book_path(book), method: :delete, "data-confirm"=>"Are you sure?" %></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
+<!-------------------------------newページ（新規投稿欄）--------------------------------->
+
+<div class="new-content">
+
+  <h2 class="font-bold">New Book</h2>
+
+  <%= form_with model:@book, url:books_path, local:true do |f|%>
+
+    <!---------------------------------エラーメッセージ------------------------------------>
+    <% if @book_error.any? %>
+        <div class="error-box hide-box">
+            <p class="error-lead font-bold">
+                <%= "#{@book_error.length} errors prohibited this book from being saved:" %>
+            </p>
+            <ul class="error-list">
+                <% @book.errors.full_messages.each do |message| %>
+                    <li>
+                        <%= message %>
+                    </li>
+                <% end %>
+            </ul>
+    　　</div>
+    <% end %>
+    <!------------------------------------------------------------------------------------->
+
+    <p class="new">Title</p>
+    <%= f.text_field :title %>
+    <p class="new">Body</p>
+    <%= f.text_area :body %>
+    <%= f.submit "Create Book", class:"submit-btn" %>
   <% end %>
-</table>
-
-<!-------------------------------新規投稿欄--------------------------------->
-
-<h2>New Book</h2>
-<!----エラー文---->
-<%= @book.errors.full_messages.each do |message| %>
-<%= "#{@book.errors.full_messages.length}error prohibited this book from being saved:" %>
-  <ul>
-    <li>
-      <%= message %>
-    </li>
-  </ul>
-<% end %>
-<!---------------->
-<%= form_with model:@book, url:books_path, local:true do |f|%>
-  <p>Title</p>
-  <%= f.text_field :title %>
-  <p>Body</p>
-  <%= f.text_area :body %>
-  <%= f.submit "Create Book" %>
-<% end %>
+</div>
 
 
